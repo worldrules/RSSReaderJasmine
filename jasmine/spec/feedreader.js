@@ -27,10 +27,11 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
+         /* Percorre todos os feeds , verificando se URL's estão definidos 
+         *  E se são maiores que 0 , ou seja uma validação
          */
+
+
         it('url defined', function () {
             for (const feed of allFeeds) {
                 expect(feed.url).toBeDefined();
@@ -39,9 +40,8 @@ $(function() {
          });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
+        /* Percorre todos os feeds , verificando se Nome's estão definidos 
+         *  E se são maiores que 0 , ou seja uma validação
          */
         it('name defined', function () {
             for (const feed of allFeeds) {
@@ -54,24 +54,20 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* Criado um novo grupo de testes, chamado "The Menu" */
+
     describe('The Menu', function () { 
 
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+        // Verifica se o body tem a classe 'menu-hidden' e identifica caso seja true
+
         it('is hidden', function () { 
             const body  = $('body');
             expect(body.hasClass('menu-hidden')).toBe(true)
          })
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+        //Cria duas variáveis e faz um expect se quando clicado
+        //o menu vai receber toggle da classe 'menu-hidden' tanto falso , quanto verdadeiro
+
          it('toggles on and off', function () { 
              const body = $('body');
              const menu = $('.menu-icon-link');
@@ -86,14 +82,11 @@ $(function() {
      })
 
      describe('Initial Entries', function () {  
-         /* TODO: Write a new test suite named "Initial Entries" */
-     
-             /* TODO: Write a test that ensures when the loadFeed
-              * function is called and completes its work, there is at least
-              * a single .entry element within the .feed container.
-              * Remember, loadFeed() is asynchronous so this test will require
-              * the use of Jasmine's beforeEach and asynchronous done() function.
-              */
+         
+        /* Criado um novo grupo de testes, chamado "Initial Entries" */
+         
+        //Função assincrona para verificar se feed tem filhos maiores que 0
+
         beforeEach(function (done) {  
             loadFeed(0,done);
         });
@@ -106,7 +99,9 @@ $(function() {
 
 
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    
+     /* Criado um novo grupo de testes, chamado "New Feed Selection" */
+
      describe('New Feed Selection', function () {
          const feed = $('.feed');
          const firstFeed = [];
@@ -117,10 +112,8 @@ $(function() {
                });
              loadFeed(1,done);
           });
-          /* TODO: Write a test that ensures when a new feed is loaded
-           * by the loadFeed function that the content actually changes.
-           * Remember, loadFeed() is asynchronous.
-           */
+         
+          // Se o conteúdo mudar
           it('content changes', function(){
             Array.from(feed.children).forEach(function(entry,index){
                 console.log(entry.innerText, firstFeed[index], entry.innerText === firstFeed[index]);
