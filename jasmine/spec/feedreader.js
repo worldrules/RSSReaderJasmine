@@ -9,6 +9,8 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+    const feed = $('.feed');
+    const firstFeed = [];
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
@@ -92,7 +94,7 @@ $(function() {
         });
 
         it('complete work', function () { 
-            const feed = $('.feed');
+            const feed = $('.feed .entry');
             expect(feed.children.length > 0).toBe(true)
          })
      });
@@ -102,24 +104,22 @@ $(function() {
     
      /* Criado um novo grupo de testes, chamado "New Feed Selection" */
 
-     describe('New Feed Selection', function () {
-         const feed = $('.feed');
-         const firstFeed = [];
-         beforeEach(function (done) { 
-             loadFeed(0);
-             Array.from(feed.children).forEach(function (entry) {
-                 firstFeed.push(entry.innerText);
-               });
-             loadFeed(1,done);
-          });
+     describe('New Feed Selection', function() {
+        var oldFeed;
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                // store old feed
+                oldFeed = $('.feed').html();
+                // fetch newer feed
+                loadFeed(1, done);
+            });
+        });
          
           // Se o conteúdo mudar
-          it('content changes', function(){
-            Array.from(feed.children).forEach(function(entry,index){
-                console.log(entry.innerText, firstFeed[index], entry.innerText === firstFeed[index]);
-                expect(entry.innerText === firstFeed[index]).toBe(false);
-                expect(entry.innerText, firstFeed[index], entry.innerText === firstFeed[index]);
-            });	
+          it('is different from old', function() {
+            expect($('.feed').html()).not.toBe(oldFeed);
+        
         });
       });
 }());
