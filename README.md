@@ -1,16 +1,18 @@
-What is this?
-RSS Feed Reader coded with Javascript ES6.
+# O que é ??
 
-How to run
-Download the repo and open index.html with your favorite ES6 compatible browser.
+RSS Feed Reader feito em Javascript ES6.
 
-Click the humber menu to select the source website of the RSS feeds.
+**How to run**
+Baixe o repositório e abra o index.html no seu navegador favorito.
 
-Adding website
-Currently 4 websites are registered. If you want to add more websites, please open app.js and edit the allFeeds array.
+Click no meno para selecionar o website com os Feeds RSS.
 
-Test
-This application uses jasmine test suite for testing.
+# Adicionando WebSite
 
-Licenese
-see LICENSE
+
+Atualmente temos 4 links registrados. Se quiser adicionar mais , abra o app.js e mude o array "allFeeds", conforme modelo.
+
+#  Test
+
+Aplicação usada para testes é o >   [jasmine test suite](https://jasmine.github.io/2.0/introduction.html)  para testes..
+
