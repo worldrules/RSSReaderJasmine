@@ -2,7 +2,7 @@
 
 RSS Feed Reader feito em Javascript ES6.
 
-**How to run**
+# Como rodar ?
 Baixe o repositório e abra o index.html no seu navegador favorito.
 
 Click no meno para selecionar o website com os Feeds RSS.
